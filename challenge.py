@@ -1,7 +1,14 @@
 import time
 
 
-def finish_date():
+def finish_date(func):
+    def wrapper(*args,**kwargs):
+        func(*args,**kwargs)
+        
+        final_time = time.strftime("%d/%m/%Y - %H:%M:%S",time.localtime())
+        
+        print(f'{func(*args, **kwargs)} \n Process end date and time: {final_time}')
+    return wrapper
     # You have to code here!!
 
 
